@@ -1,4 +1,4 @@
-class FriendshipsController < ApplicationController
+class Api::V1::FriendshipsController < Api::V1::ApplicationController
   attr_accessor :follower, :followed
 
   before_action :set_users, only: [:create, :destroy]

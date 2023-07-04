@@ -1,4 +1,4 @@
-class SleepRecordsController < ApplicationController
+class Api::V1::SleepRecordsController < Api::V1::ApplicationController
   attr_accessor :user
 
   before_action :set_users

@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
+
   has_many :sleep_records
   has_many :friendships, foreign_key: :follower_id
   has_many :followed_users, through: :friendships, source: :followed

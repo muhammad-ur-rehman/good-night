@@ -1,12 +1,4 @@
 class UsersController < ApplicationController
-  def following_sleep_records
-    user = User.find(params[:user_id])
-
-    sleep_records = SleepRecordService.new(user).followed_users_records
-
-    render json: sleep_records, include: { user: { only: :name } }
-  end
-
   def create
     user = User.new(user_params)
 
@@ -15,6 +7,20 @@ class UsersController < ApplicationController
     else
       render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
     end
+  end
+
+  def show
+    user = User.find(params[:id])
+    render json: user
+  end
+
+
+  def following_sleep_records
+    user = User.find(params[:user_id])
+
+    sleep_records = SleepRecordService.new(user).followed_users_records
+
+    render json: sleep_records, include: { user: { only: :name } }
   end
 
   private
